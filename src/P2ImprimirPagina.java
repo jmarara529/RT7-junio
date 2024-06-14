@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class P2ImprimirPagina {
 
@@ -16,31 +15,25 @@ public class P2ImprimirPagina {
         JButton btnAnterior = new JButton("< Anterior");
         JButton btnSiguiente = new JButton("Siguiente >");
 
-        btnAnterior.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (numeroPagina[0] > 1) {
-                    numeroPagina[0]--;
-                    ventana.setTitle("Página " + numeroPagina[0]);
-                    btnSiguiente.setEnabled(true);
-                }
-                if (numeroPagina[0] == 1) {
-                    btnAnterior.setEnabled(false);
-                }
+        btnAnterior.addActionListener(e -> {
+            if (numeroPagina[0] > 1) {
+                numeroPagina[0]--;
+                ventana.setTitle("Página " + numeroPagina[0]);
+                btnSiguiente.setEnabled(true);
+            }
+            if (numeroPagina[0] == 1) {
+                btnAnterior.setEnabled(false);
             }
         });
 
-        btnSiguiente.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (numeroPagina[0] < 20) {
-                    numeroPagina[0]++;
-                    ventana.setTitle("Página " + numeroPagina[0]);
-                    btnAnterior.setEnabled(true);
-                }
-                if (numeroPagina[0] == 20) {
-                    btnSiguiente.setEnabled(false);
-                }
+        btnSiguiente.addActionListener(e -> {
+            if (numeroPagina[0] < 20) {
+                numeroPagina[0]++;
+                ventana.setTitle("Página " + numeroPagina[0]);
+                btnAnterior.setEnabled(true);
+            }
+            if (numeroPagina[0] == 20) {
+                btnSiguiente.setEnabled(false);
             }
         });
 
@@ -49,22 +42,14 @@ public class P2ImprimirPagina {
         JMenuItem menuItemReiniciar = new JMenuItem("Reiniciar");
         JMenuItem menuItemSalir = new JMenuItem("Salir");
 
-        menuItemReiniciar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                numeroPagina[0] = 1;
-                ventana.setTitle("Página " + numeroPagina[0]);
-                btnAnterior.setEnabled(false);
-                btnSiguiente.setEnabled(true);
-            }
+        menuItemReiniciar.addActionListener(e -> {
+            numeroPagina[0] = 1;
+            ventana.setTitle("Página " + numeroPagina[0]);
+            btnAnterior.setEnabled(false);
+            btnSiguiente.setEnabled(true);
         });
 
-        menuItemSalir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        menuItemSalir.addActionListener(e -> System.exit(0));
 
         menuOperaciones.add(menuItemReiniciar);
         menuOperaciones.addSeparator();
