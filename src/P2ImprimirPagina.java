@@ -15,6 +15,7 @@ public class P2ImprimirPagina {
         JButton btnAnterior = new JButton("< Anterior");
         JButton btnSiguiente = new JButton("Siguiente >");
 
+        btnAnterior.setEnabled(false);
         btnAnterior.addActionListener(e -> {
             if (numeroPagina[0] > 1) {
                 numeroPagina[0]--;
